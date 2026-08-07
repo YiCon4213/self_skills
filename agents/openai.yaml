@@ -1,0 +1,4 @@
+interface:
+  display_name: "每日 AI 步伐"
+  short_description: "复盘昨日 Codex tasks、Codex chats 与 Claude Code 对话并生成可行动的中文步伐报告"
+  default_prompt: "使用 $review-daily-ai-work 复盘我前一自然日的 AI 对话并生成步伐报告。"
