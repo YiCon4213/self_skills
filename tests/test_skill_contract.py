@@ -38,6 +38,10 @@ class SkillContractTests(unittest.TestCase):
     def test_report_contract_prioritizes_diagnosis_over_activity_log(self):
         contract = (SKILL_ROOT / "references" / "report-contract.md").read_text(encoding="utf-8")
         skill = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
+        readme = (SKILL_ROOT / "README.md").read_text(encoding="utf-8")
+        publishing = (SKILL_ROOT / "references" / "notion-publishing.md").read_text(
+            encoding="utf-8"
+        )
 
         for phrase in (
             "固定核心章节",
@@ -51,6 +55,8 @@ class SkillContractTests(unittest.TestCase):
 
         self.assertNotIn("且只使用六个一级内容章节", contract)
         self.assertNotIn("必须分别说明", contract)
+        self.assertNotIn("固定包含昨日概览", readme)
+        self.assertNotIn("标题、六节、链接", publishing)
 
     def test_problem_items_require_a_complete_reasoning_chain(self):
         contract = (SKILL_ROOT / "references" / "report-contract.md").read_text(encoding="utf-8")
