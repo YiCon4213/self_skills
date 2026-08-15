@@ -35,10 +35,51 @@ class SkillContractTests(unittest.TestCase):
         ):
             self.assertNotIn(obsolete, skill_text + report_contract)
 
-    def test_report_contract_keeps_recommendation_scope(self):
-        report_contract = (SKILL_ROOT / "references" / "report-contract.md").read_text(encoding="utf-8")
-        for required_text in ("1–4", "书籍", "思维", "生活"):
-            self.assertIn(required_text, report_contract)
+    def test_report_contract_prioritizes_diagnosis_over_activity_log(self):
+        contract = (SKILL_ROOT / "references" / "report-contract.md").read_text(encoding="utf-8")
+        skill = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
+
+        for phrase in (
+            "固定核心章节",
+            "条件章节",
+            "10%–15%",
+            "40%–50%",
+            "30%–40%",
+            "2500–4000",
+        ):
+            self.assertIn(phrase, contract + skill)
+
+        self.assertNotIn("且只使用六个一级内容章节", contract)
+        self.assertNotIn("必须分别说明", contract)
+
+    def test_problem_items_require_a_complete_reasoning_chain(self):
+        contract = (SKILL_ROOT / "references" / "report-contract.md").read_text(encoding="utf-8")
+        for phrase in (
+            "当时的理解或默认假设",
+            "局限类型",
+            "如何限制推理与提问",
+            "反证与待验证",
+            "下一步验证动作",
+            "看待和理解问题的视角局限",
+            "工作流与方法局限",
+            "认知模型或知识缺口",
+        ):
+            self.assertIn(phrase, contract)
+
+    def test_targeted_learning_closes_the_problem_learning_loop(self):
+        contract = (SKILL_ROOT / "references" / "report-contract.md").read_text(encoding="utf-8")
+        for phrase in (
+            "对应问题",
+            "主要学习内容",
+            "主要知识",
+            "实践产出",
+            "验证标准",
+            "1–3",
+            "书籍",
+            "思维",
+            "生活",
+        ):
+            self.assertIn(phrase, contract)
 
     def test_optional_idempotent_notion_publish_contract(self):
         skill = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
