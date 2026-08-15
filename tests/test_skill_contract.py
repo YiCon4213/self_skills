@@ -54,7 +54,7 @@ class SkillContractTests(unittest.TestCase):
             self.assertIn(phrase, contract + skill)
 
         self.assertNotIn("且只使用六个一级内容章节", contract)
-        self.assertNotIn("必须分别说明", contract)
+        self.assertNotIn("`昨日概览` 和 `数据缺口` 必须分别说明", contract)
         self.assertNotIn("固定包含昨日概览", readme)
         self.assertNotIn("标题、六节、链接", publishing)
 
