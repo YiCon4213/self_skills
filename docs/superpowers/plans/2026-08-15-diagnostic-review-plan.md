@@ -1,5 +1,7 @@
 # Diagnostic-First Daily Review Implementation Plan
 
+> 历史说明：本文档描述第一轮实施计划，已被当前报告契约取代。后续修改与验收一律以 `references/report-contract.md` 为准。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Rebalance the daily AI reflection toward evidence-backed limitations and precisely matched learning resources while making overview, learning, and data-gap sections conditional.
